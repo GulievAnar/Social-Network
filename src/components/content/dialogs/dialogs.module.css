@@ -1,0 +1,17 @@
+.blockDialogs {
+    display: grid;
+    padding: 50px 50px;
+    grid-template-columns: 2fr 8fr;
+    grid-template-areas: 
+    'i m';
+}
+
+.dialogsItems {
+    grid-area: i;
+}
+
+.blockMessages {
+    grid-area: m;
+}
+
+

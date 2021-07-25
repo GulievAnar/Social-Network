@@ -1,0 +1,5 @@
+.blockHeader {
+    margin: 10px;
+    background-color: royalblue;
+    grid-area: h;
+}

@@ -1,0 +1,18 @@
+.blockProfileInfo{
+    display: grid;
+    grid-template-areas: 
+    'a n'
+    'a s';
+}
+
+#avatar {
+    grid-area: a;
+}
+
+#name {
+    grid-area: n;
+}
+
+#status {
+    grid-area: s;
+}

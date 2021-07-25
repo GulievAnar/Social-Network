@@ -1,0 +1,21 @@
+body {
+  background-color: #dce1e6;
+}
+
+.App {
+  width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-areas: 
+  'h h h'
+  'n c c';
+}
+
+.blockContent {
+  margin: 10px;
+  width: 1000px;
+  background-color: rgba(248, 248, 250, 0.521);
+  grid-area: c;
+  border: 1px rgba(0, 0, 0, 0.521) solid;
+  border-radius: 10px;
+}

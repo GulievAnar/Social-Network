@@ -1,0 +1,15 @@
+.blockNavbar {
+    border: solid white 1px;
+    margin: 10px;
+    width: 200px;
+    background-color: royalblue;
+}
+
+.blockNavbar a {
+    color: white;
+    padding: 10px 10px 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+}
+
