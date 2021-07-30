@@ -1,29 +1,35 @@
-import { followActionCreater, setUsersActionCreater, unfollowActionCreater } from '../../../reducers/users-reducer';
-import Users from './Users';
-import UsersClassComponent from './UsersClassComponent';
-import {connect} from 'react-redux';
-
-
-
+import React from 'react';
+import Users from "./UsersClassComponent";
+import {connect} from "react-redux";
+import {followAC, setCurrentPageAC, setUsersAC, setUsersTotalCountAC, unfollowAC} from "../../../reducers/users-reducer";
 
 let mapStateToProps = (state) => {
     return {
-        users: state.usersReducer.users
+        users: state.usersPage.users,
+        pageSize: state.usersPage.pageSize,
+        totalUsersCount: state.usersPage.totalUsersCount,
+        currentPage: state.usersPage.currentPage
     }
 }
 
 let mapDispatchToProps = (dispatch) => {
     return {
         follow: (userId) => {
-            dispatch(followActionCreater(userId));
+            dispatch(followAC(userId));
         },
-        unFollow: (usersId) => {
-            dispatch(unfollowActionCreater(usersId));
+        unfollow: (userId) => {
+            dispatch(unfollowAC(userId));
         },
         setUsers: (users) => {
-            dispatch(setUsersActionCreater(users))
+            dispatch(setUsersAC(users));
+        },
+        setCurrentPage: (pageNumber) => {
+            dispatch(setCurrentPageAC(pageNumber))
+        },
+        setTotalUsersCount: (totalCount) => {
+            dispatch(setUsersTotalCountAC(totalCount))
         }
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(UsersClassComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(Users);

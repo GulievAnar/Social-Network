@@ -10,3 +10,16 @@
 .oneUser {
     padding: 10px;
 }
+
+.selectedPage {
+    font: bold;
+}
+
+.userPhoto {
+    width: 100px;
+   height: 100px;
+}
+
+.selectedPage {
+   font-weight: bold;
+}

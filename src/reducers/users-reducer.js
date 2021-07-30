@@ -1,67 +1,57 @@
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
+const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
+const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
 
 let initialState = {
-    users: [],
-    // users: [
-    //     { id: 1, photoUrl: 'https://yt3.ggpht.com/ytc/AKedOLS1AZhEVoT69mDznUiqA5tTkS4D47iqYSE7eYpNCg=s88-c-k-c0x00ffffff-no-rj', followed: true, name: 'Anar Guliev', status: 'I m boss', location: 'Almaty' },
-    //     { id: 2, photoUrl: 'https://yt3.ggpht.com/ytc/AKedOLS1AZhEVoT69mDznUiqA5tTkS4D47iqYSE7eYpNCg=s88-c-k-c0x00ffffff-no-rj', followed: false, name: 'Vladimir Lubnin', status: 'I love Tarkov', location: 'Saints-Peterburg' },
-    //     { id: 3, photoUrl: 'https://yt3.ggpht.com/ytc/AKedOLS1AZhEVoT69mDznUiqA5tTkS4D47iqYSE7eYpNCg=s88-c-k-c0x00ffffff-no-rj', followed: false, name: 'Danya Pimenov', status: 'I love Skate', location: 'Saints-Peterburg' },
-    // ]
-}
+    users: [ ],
+    pageSize: 5,
+    totalUsersCount: 6,
+    currentPage: 2
+};
 
 const usersReducer = (state = initialState, action) => {
-
-    switch (action.type) {
+    switch(action.type) {
         case FOLLOW:
             return {
                 ...state,
-                users: state.users.map(user => {
-                    if (user.id === action.userId) {
-                        return { ...user, followed: true }
+                users: state.users.map( u =>  {
+                    if (u.id === action.userId) {
+                        return {...u, followed: true}
                     }
-                    return user;
+                    return u;
                 })
-            };
+            }
         case UNFOLLOW:
             return {
                 ...state,
-                users: state.users.map(user => {
-                    if (user.id === action.userId) {
-                        return { ...user, followed: false }
+                users: state.users.map( u =>  {
+                    if (u.id === action.userId) {
+                        return {...u, followed: false}
                     }
-                    return user;
+                    return u;
                 })
-            };
-        case SET_USERS:
-            return {
-                ...state, users: [...state.users, ...action.users]
             }
-        default: 
-            return state
+        case SET_USERS: {
+            return { ...state, users: action.users }
+        }
+        case SET_CURRENT_PAGE: {
+            return { ...state, currentPage: action.currentPage}
+        }
+        case SET_TOTAL_USERS_COUNT: {
+            return { ...state, totalUsersCount: action.count}
+        }
+        default:
+            return state;
     }
 }
 
-export let followActionCreater = (userId) => {
-    return {
-        type: FOLLOW,
-        userId
-    }
-}
 
-export let unfollowActionCreater = (userId) => {
-    return {
-        type: UNFOLLOW,
-        userId
-    }
-}
-
-export const setUsersActionCreater = (users) => {
-    return {
-        type: SET_USERS,
-        users
-    }
-}
+export const followAC = (userId) => ({type: FOLLOW, userId })
+export const unfollowAC = (userId) => ({type: UNFOLLOW, userId })
+export const setUsersAC = (users) => ({type: SET_USERS, users })
+export const setCurrentPageAC = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage })
+export const setUsersTotalCountAC = (totalUsersCount) => ({type: SET_TOTAL_USERS_COUNT, count: totalUsersCount })
 
 export default usersReducer;

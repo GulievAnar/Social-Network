@@ -10,7 +10,7 @@ import usersReducer from "../reducers/users-reducer";
 let reducers = combineReducers({
     postsReducer: postsReducer,
     dialogsReducer: dialogsReducer,
-    usersReducer: usersReducer
+    usersPage: usersReducer
 });
 
 let store = createStore(reducers);
